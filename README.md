@@ -1,70 +1,101 @@
-# Getting Started with Create React App
+# Binary-keeda-2.0
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This repository contains a **Dockerized React application** with clean **development and production setups**, proper **environment variable handling**, and a **GitHub-ready structure**.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🚀 Tech Stack
 
-### `npm start`
+- React (Create React App)
+- Docker & Docker Compose
+- Node.js
+- Nginx (Production)
+- Environment Variables
+- GitHub
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 📁 Project Structure
 
-### `npm test`
+react-compose/
+├── Dockerfile
+├── docker-compose.dev.yml
+├── docker-compose.prod.yml
+├── .env.example
+├── .gitignore
+├── package.json
+├── package-lock.json
+├── public/
+└── src/
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 🔐 Environment Variables
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This project uses environment variables for configuration.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 📄 `.env.example`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+A sample file is already provided.
 
-### `npm run eject`
+Create your local `.env` file using:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+cp .env.example .env
+⚠️ Important
+Never commit .env
+.env is already ignored via .gitignore
+🧪 Development Mode (Hot Reload)
+Runs the React app inside Docker using npm start.
+▶ Command
+docker compose -f docker-compose.dev.yml up --build
+🌐 Open in Browser
+http://localhost:3000
+🧠 What happens
+Uses Node container
+Code mounted as volume
+Hot reload enabled
+Best for development
+🚀 Production Mode (Optimized Build)
+Builds the React app and serves it via Nginx.
+▶ Command
+docker compose -f docker-compose.prod.yml up --build
+🌐 Open in Browser
+http://localhost:8080
+🧠 What happens
+Multi-stage Docker build
+npm run build
+Static files served via Nginx
+Optimized production setup
+🛑 Stop Containers
+docker compose down
+🧹 Optional: Clean Docker System
+docker system prune -a
+📄 Dockerfile Overview
+Stage 1: Install dependencies & build React app
+Stage 2: Serve build output using Nginx
+Smaller image size
+Faster startup
+Production best practices followed
+📦 Git & GitHub Setup
+Initialize Repository
+git init
+git branch -M main
+git remote add origin https://github.com/BharadwajShivanya/Binary-keeda-2.0.git
+Commit & Push Code
+git add .
+git commit -m "dockerized react app with dev and prod setup"
+git push origin main
+❌ Ignored Files (.gitignore)
+node_modules
+.env files
+build output
+logs
+OS specific files
+Keeps repository clean and secure.
+✅ Current Status
+✔ Docker Dev working (port 3000)
+✔ Docker Prod working (port 8080)
+✔ Environment variables handled correctly
+✔ GitHub repository synced
+✔ Production-ready setup
